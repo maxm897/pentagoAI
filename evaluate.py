@@ -10,6 +10,8 @@ SEQUENCE2_STRONG = 3
 SEQUENCE3_WEAK = 6
 SEQUENCE3_STRONG = 8
 SEQUENCE4 = 10
+MINVAL = -9999999
+MAXVAL = 9999999
 
 def evaluate(board):
 	"""Returns an float representing the relatve strength of the board. Positive values represent a stronger

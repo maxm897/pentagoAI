@@ -2,6 +2,7 @@ import evaluate
 import minimax
 import GamePlay
 import sys
+import tkinter
 
 def main():
 	print('Welcome to Pentago! The first player to get 5 marbles in a row wins the game. In each turn,',
@@ -16,22 +17,78 @@ def main():
 
 def new_game():
 	turn = input('Would you like to go first? (y/n) ')
-	while first != 'y' and first != 'n':
+	while turn != 'y' and turn != 'n':
 		print('You have entered an invalid input. Type either y or n and then press enter')
-		first = input('Would you like to go first? (y/n) ')
+		turn = input('Would you like to go first? (y/n) ')
 	if turn == 'y':
 		turn = 0
 	if turn == 'n':
 		turn = 1
 	board = GamePlay.new_board()
 
-	game_over = false
-	while !game_over:
+	game_over = False
+	while (game_over==False):
+		if turn==0:
+			x = input("Please input the x coordinate where you would like to place your marble")
+
+			while (valid(x, 1)==False):
+			    x=input("Invalid input, please select a number between 1 and 6")
+
+
+			y = input("Please input the y coordinate")
+
+			while (valid(y, 1)==False):
+				y=input("Invalid input, please select a number between 1 and 6")
+
+
+			s = input("Please select which square you would like to rotate")
+			while (valid(s, 2)==False):
+				s=input("invalid input, please enter an integer between 1 and 4")
+			
+			d = input("please select a direction you would like to rotate the sqaure")
+			while (valid(d, 3)==False):
+				d = input("invalid input, please enter 'R' or 'L'")
+			
+			action = GamePlay.Action(int(x), int(y), int(s), d)
+			GamePlay.take_action(board, action, "Player")
+			print("the new board is " + str(board))
+			turn=1
+		if turn==1:
+			minimax.minimax(board, 3)
+			action=minimax.getBestAction()
+			GamePlay.take_action(board, action, "AI")
+			print("the AI has taken action: " + action)
+			print("the new board is " + str(board))
+			turn=0
+			
+
+
+def valid(x, type):
+	"""helper function determining if input is valid
+	paramter x = the input
+	parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction"""
+	assert (type==1 or type ==2 or type==3)
+	
+	
+	if (type==1):
+		try:
+			if (int(x)<1 or int(x)>6):
+				return False
+		except ValueError:
+			return False
+	elif (type==2):
+		try:
+			if (int(x)<1 or int(x)>4):
+				return False
+		except ValueError:
+			return False
 		
 
+	elif (type==3 and x!="R" and x!="L"):
+		return False
+	
 
-
-
+	return True
 
 if __name__ == "__main__":
 	main()
