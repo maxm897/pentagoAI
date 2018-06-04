@@ -24,15 +24,19 @@ def rotate(board, direction, square_index):
 	"""
 
 	if square_index == 1:
+		
 		vertical_offset = 0
 		horizontal_offset = 0
 	if square_index == 2:
+		
 		vertical_offset = 3
 		horizontal_offset = 0
 	if square_index == 3:
+		
 		vertical_offset = 0
 		horizontal_offset = 3
 	if square_index == 4:
+		
 		vertical_offset = 3
 		horizontal_offset = 3
 

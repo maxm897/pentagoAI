@@ -10,8 +10,8 @@ def minimax(board, depth):
         return eval
     else:
         val = evaluate.MINVAL
-        for x in range(1,7):
-            for y in range(1,7):
+        for x in range(0,6):
+            for y in range(0,6):
                 for box in range(1,5):
                     for dir in ["R", "L"]:
                         a = GamePlay.Action(x,y,box,dir)
@@ -30,8 +30,8 @@ def maximin(board, depth):
         return eval
     else:
         val = evaluate.MAXVAL
-        for x in range(1, 7):
-            for y in range(1, 7):
+        for x in range(0, 6):
+            for y in range(0, 6):
                 for box in range(1, 5):
                     for dir in ["R", "L"]:
                         a = GamePlay.Action(x, y, box, dir)

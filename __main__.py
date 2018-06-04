@@ -49,7 +49,7 @@ def new_game():
 			while (valid(d, 3)==False):
 				d = input("invalid input, please enter 'R' or 'L'")
 			
-			action = GamePlay.Action(int(x), int(y), int(s), d)
+			action = GamePlay.Action(int(x)-1, int(y)-1, int(s), d)
 			board=GamePlay.take_action(board, action, "Player")
 			print("the new board is " + str(board))
 			turn=1
