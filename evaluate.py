@@ -634,22 +634,6 @@ def evaluate(board):
 	AI_score = AI_sequence2_weak*SEQUENCE2_WEAK + AI_sequence2_strong*SEQUENCE2_STRONG + \
 		AI_sequence3_weak*SEQUENCE3_WEAK + AI_sequence3_strong*SEQUENCE3_STRONG + \
 		AI_sequence4*SEQUENCE4 + AI_centers*CENTER_BONUS
-
-
-	print(Player_sequence2_weak)
-	print(Player_sequence2_strong)
-	print(Player_sequence3_weak)
-	print(Player_sequence3_strong)
-	print(Player_sequence4)
-	print(Player_sequence5)
-
-	print(AI_sequence2_weak)
-	print(AI_sequence2_strong)
-	print(AI_sequence3_weak)
-	print(AI_sequence3_strong)
-	print(AI_sequence4)
-	print(AI_sequence5)
-
 	
 
 
