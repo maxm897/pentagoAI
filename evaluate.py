@@ -10,6 +10,11 @@ SEQUENCE2_STRONG = 3
 SEQUENCE3_WEAK = 6
 SEQUENCE3_STRONG = 8
 SEQUENCE4 = 10
+#minval of game (player win)
+MINVAL = -9999999
+#maxval of game (AI win)
+MAXVAL = 9999999
+
 
 def evaluate(board):
 	"""Returns an float representing the relatve strength of the board. Positive values represent a stronger
@@ -37,8 +42,10 @@ def evaluate(board):
 	AI_sequence4 = 0
 	AI_sequence5 = 0
 
+
+
 	#Find runs in every column
-	for x range(1, 6):
+	for x in range(1, 6):
 		for y in range(1,6):
 			if y == 1:
 				current_type = board[x][y]
@@ -103,7 +110,7 @@ def evaluate(board):
 					run_length = 1
 
 	#find runs in every row
-	for x range(1, 6):
+	for x in range(1, 6):
 		for y in range(1,6):
 			if y == 1:
 				current_type = board[y][x]
