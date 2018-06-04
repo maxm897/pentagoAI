@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcdc64c6-8076-4d3e-b66a-4e15797819eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/__main__.py" afterPath="$PROJECT_DIR$/__main__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/evaluate.py" afterPath="$PROJECT_DIR$/evaluate.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/minimax.py" afterPath="$PROJECT_DIR$/minimax.py" />
-    </list>
+    <list default="true" id="dcdc64c6-8076-4d3e-b66a-4e15797819eb" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +15,7 @@
       <file leaf-file-name="evaluate.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
+            <state relative-caret-position="563">
               <caret line="75" column="32" lean-forward="true" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
               <folding />
             </state>
@@ -36,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__main__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__main__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/__main__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -48,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GamePlay.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GamePlay.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GamePlay.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="688">
+            <state relative-caret-position="1285">
               <caret line="102" column="54" lean-forward="false" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
               <folding />
             </state>
@@ -257,22 +253,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GamePlay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="102" column="54" lean-forward="false" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="75" column="32" lean-forward="true" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/minimax.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -288,6 +268,22 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="75" column="32" lean-forward="true" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GamePlay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1285">
+          <caret line="102" column="54" lean-forward="false" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
