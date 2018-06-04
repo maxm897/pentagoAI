@@ -38,8 +38,8 @@ def evaluate(board):
 	AI_sequence5 = 0
 
 	#Find runs in every column
-	for x in range(5):
-		for y in range(5):
+	for x in range(6):
+		for y in range(6):
 			if y == 0:
 				current_type = board[x][y]
 				run_length = 1
@@ -109,8 +109,8 @@ def evaluate(board):
 					run_length = 1
 
 	#find runs in every row
-	for x in range(5):
-		for y in range(5):
+	for x in range(6):
+		for y in range(6):
 			if y == 0:
 				current_type = board[y][x]
 				run_length = 1
@@ -634,8 +634,6 @@ def evaluate(board):
 	AI_score = AI_sequence2_weak*SEQUENCE2_WEAK + AI_sequence2_strong*SEQUENCE2_STRONG + \
 		AI_sequence3_weak*SEQUENCE3_WEAK + AI_sequence3_strong*SEQUENCE3_STRONG + \
 		AI_sequence4*SEQUENCE4 + AI_centers*CENTER_BONUS
-	
-
 
 	return AI_score - Player_score
 
