@@ -50,13 +50,13 @@ def new_game():
 				d = input("invalid input, please enter 'R' or 'L'")
 			
 			action = GamePlay.Action(int(x), int(y), int(s), d)
-			GamePlay.take_action(board, action, "Player")
+			board=GamePlay.take_action(board, action, "Player")
 			print("the new board is " + str(board))
 			turn=1
 		if turn==1:
 			minimax.minimax(board, 3)
 			action=minimax.getBestAction()
-			GamePlay.take_action(board, action, "AI")
+			board=GamePlay.take_action(board, action, "AI")
 			print("the AI has taken action: " + action)
 			print("the new board is " + str(board))
 			turn=0
