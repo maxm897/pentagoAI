@@ -90,9 +90,9 @@ def take_action(board, action, player):
 		set_value = 0
 	else:
 		set_value = 1
-
-	board[action.x_coordinate][action.y_coordinate] = set_value
-	return rotate(board, action.direction, action.square_index)
+	temp=board
+	temp[action.x_coordinate][action.y_coordinate] = set_value
+	return rotate(temp, action.direction, action.square_index)
 
 def print_action(action):
 	"""Prints the given action as a string for use in the function main"""

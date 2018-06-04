@@ -1,5 +1,6 @@
 import evaluate
 import GamePlay
+from copy import copy, deepcopy
 
 
 bestaction = None
@@ -46,5 +47,6 @@ def maximin(board, depth, bestaction):
 
 def getBestAction(board, depth):
     bestaction = GamePlay.Action(1,1,1,"L")
-    minimax(board, depth, bestaction)
+    temp = deepcopy(board)
+    minimax(temp, depth, bestaction)
     return bestaction

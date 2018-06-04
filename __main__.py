@@ -56,7 +56,9 @@ def new_game():
 		if turn==1:
 			
 			##minimax.minimax(board, 3, action)
+			
 			action=minimax.getBestAction(board, 3)
+			print("board is "+ str(board))
 			board=GamePlay.take_action(board, action, "AI")
 			print("the AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
 				  + ", box=" + str(action.square_index) + ", direction=" + str(action.direction))
