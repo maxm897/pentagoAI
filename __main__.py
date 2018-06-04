@@ -54,10 +54,12 @@ def new_game():
 			print("the new board is " + str(board))
 			turn=1
 		if turn==1:
-			minimax.minimax(board, 3)
-			action=minimax.getBestAction()
+			
+			##minimax.minimax(board, 3, action)
+			action=minimax.getBestAction(board, 3)
 			board=GamePlay.take_action(board, action, "AI")
-			print("the AI has taken action: " + action)
+			print("the AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
+				  + ", box=" + str(action.square_index) + ", direction=" + str(action.direction))
 			print("the new board is " + str(board))
 			turn=0
 			
