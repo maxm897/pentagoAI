@@ -1,7 +1,6 @@
 import evaluate
 import minimax
 import GamePlay
-import sys
 import tkinter
 
 def main():
@@ -11,8 +10,7 @@ def main():
 		'the y coordinate of the marble location (int 0...5), the index of the square to be rotated',
 		'(int 1...4) and the direstion fo rotation ("R" or "L"). See the following diagrams for reference.',
 		'Good luck!',
-		'\n\nBoard Layout:\n5 \n4 \n3 \n2 \n1 \n0 1 2 3 4 5 \n\nSquare Index Layout:\n2   4\n1   3\n')
-
+		'\n\nBoard Layout:\n5 \n4 \n3 \n2 \n1 \n0 \n 0 1 2 3 4 5 \n\nSquare Index Layout:\n2   4\n1   3\n')
 	new_game()
 
 def new_game():
@@ -27,45 +25,73 @@ def new_game():
 	board = GamePlay.new_board()
 
 	game_over = False
-	while (game_over==False):
+	while not game_over:
 		if turn==0:
-			x = input("Please input the x coordinate where you would like to place your marble")
-
+			x = input("Please input the x coordinate where you would like to place your marble ")
 			while (valid(x, 1)==False):
-			    x=input("Invalid input, please select a number between 1 and 6")
-
-
-			y = input("Please input the y coordinate")
-
+			    x=input("Invalid input, please select a number between 0 and 5 ")
+			y = input("Please input the y coordinate ")
 			while (valid(y, 1)==False):
-				y=input("Invalid input, please select a number between 1 and 6")
+				y=input("Invalid input, please select a number between 0 and 5 ")
+			while not(board[x][y] == ""):
+				print("There is already a marble on the location you selected. Please choose another one")
+				x = input("Please input the x coordinate where you would like to place your marble ")
+				while (valid(x, 1)==False):
+				    x=input("Invalid input, please select a number between 0 and 5 ")
+				y = input("Please input the y coordinate ")
+				while (valid(y, 1)==False):
+					y=input("Invalid input, please select a number between 0 and 5 ")
 
 
-			s = input("Please select which square you would like to rotate")
+			s = input("Please input the index of the square you would like to rotate ")
 			while (valid(s, 2)==False):
-				s=input("invalid input, please enter an integer between 1 and 4")
+				s=input("Invalid input, please enter an integer between 1 and 4 ")
 			
-			d = input("please select a direction you would like to rotate the sqaure")
+			d = input("Please input the direction you would like to rotate the sqaure ")
 			while (valid(d, 3)==False):
-				d = input("invalid input, please enter 'R' or 'L'")
+				d = input("Invalid input, please enter R or L ")
 			
-			action = GamePlay.Action(int(x)-1, int(y)-1, int(s), d)
+			action = GamePlay.Action(int(x), int(y), int(s), d)
 			board=GamePlay.take_action(board, action, "Player")
-			print("the new board is " + str(board))
+			print("The new board is " + str(board))
 			turn=1
-		if turn==1:
+		else:
 			
 			##minimax.minimax(board, 3, action)
 			
 			action=minimax.getBestAction(board, 3)
-			print("board is "+ str(board))
 			board=GamePlay.take_action(board, action, "AI")
-			print("the AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
+			print("The AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
 				  + ", box=" + str(action.square_index) + ", direction=" + str(action.direction))
-			print("the new board is " + str(board))
+			print("The new board is " + str(board))
 			turn=0
-			
 
+		if evaluate.evaluate(board) in [9999999, -9999999, -.5]:
+			final_score = evaluate.evaluate(board)
+			game_over = True
+		board_full = True
+		for x in range(6):
+			for y in range(6):
+				if board[x][y] == "":
+					board_full = False
+		if board_full:
+			game_over = True
+			final_score = -.6
+
+	if final_score == 9999999:
+		print("Game over, the AI has won")
+	if final_score == -9999999:
+		print("Congratulations! You won!")
+	if final_score == -.5:
+		print("Its a tie!")
+	if final_score == -.6:
+		print("The board is full, its a tie!")
+	again = input('Would you like to play again? (y/n) ')
+	while again != 'y' and again != 'n':
+		print('You have entered an invalid input. Type either y or n and then press enter')
+		again = input('Would you like to play again? (y/n) ')
+	if again == 'y':
+		new_game()
 
 def valid(x, type):
 	"""helper function determining if input is valid
@@ -76,7 +102,7 @@ def valid(x, type):
 	
 	if (type==1):
 		try:
-			if (int(x)<1 or int(x)>6):
+			if (int(x)<1 or int(x)>5):
 				return False
 		except ValueError:
 			return False

@@ -93,19 +93,7 @@ def take_action(board, action, player):
 	temp=board
 	temp[action.x_coordinate][action.y_coordinate] = set_value
 	return rotate(temp, action.direction, action.square_index)
-
-def print_action(action):
-	"""Prints the given action as a string for use in the function main"""
-
-	if action.direction == "R":
-		full_direction = " right"
-	if action.direction == "L":
-		full_direction = " left"
-
-	print("AI's move: marble at (" + str(action.x_coordinate) + "," + str(action.y_coordinate) + "), " +
-		"rotate square " + str(action.square_index) + full_direction)
-
-
+	
 
 class Action(object):
 	"""Each acton is composed of the location on the board for a marble to be placed, a square selection, 
