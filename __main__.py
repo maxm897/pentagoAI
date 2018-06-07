@@ -14,6 +14,9 @@ def main():
 	new_game()
 
 def new_game():
+	depth = input("To what depth would you like the AI to search?")
+	while (valid(depth, 4)==False):
+		depth = input("invalid depth, please input a non-negative integer ")
 	turn = input('Would you like to go first? (y/n) ')
 	while turn != 'y' and turn != 'n':
 		print('You have entered an invalid input. Type either y or n and then press enter')
@@ -59,7 +62,7 @@ def new_game():
 			
 			##minimax.minimax(board, 3, action)
 			
-			action=minimax.getBestAction(board, 3)
+			action=minimax.getBestAction(board, depth)
 			board=GamePlay.take_action(board, action, "AI")
 			print("The AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
 				  + ", box=" + str(action.square_index) + ", direction=" + str(action.direction))
@@ -96,8 +99,8 @@ def new_game():
 def valid(x, type):
 	"""helper function determining if input is valid
 	paramter x = the input
-	parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction"""
-	assert (type==1 or type ==2 or type==3)
+	parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction, 4 is a depth level	"""
+	assert (type in [1,2,3,4])
 	
 	
 	if (type==1):
@@ -117,6 +120,13 @@ def valid(x, type):
 	elif (type==3 and x!="R" and x!="L"):
 		return False
 	
+	elif (type==4):
+		try:
+			if (int(x)<0):
+				return False
+		except ValueError:
+			return False
+		
 
 	return True
 
