@@ -33,7 +33,7 @@ def new_game():
 			y = input("Please input the y coordinate ")
 			while (valid(y, 1)==False):
 				y=input("Invalid input, please select a number between 0 and 5 ")
-			while not(board[x][y] == ""):
+			while not(minimax.isAvailable(board, int(x), int(y))):
 				print("There is already a marble on the location you selected. Please choose another one")
 				x = input("Please input the x coordinate where you would like to place your marble ")
 				while (valid(x, 1)==False):
