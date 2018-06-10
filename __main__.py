@@ -56,7 +56,8 @@ def new_game():
 			
 			action = GamePlay.Action(int(x), int(y), int(s), d)
 			board=GamePlay.take_action(board, action, "Player")
-			print("The new board is " + str(board))
+			print("The new board is:")
+			GamePlay.printBoard(board)
 			turn=1
 		else:
 			
@@ -66,7 +67,8 @@ def new_game():
 			board=GamePlay.take_action(board, action, "AI")
 			print("The AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
 				  + ", box=" + str(action.square_index) + ", direction=" + str(action.direction))
-			print("The new board is " + str(board))
+			print("The new board is: ")
+			GamePlay.printBoard(board)
 			turn=0
 
 		if evaluate.evaluate(board) in [9999999, -9999999, -.5]:
@@ -75,7 +77,7 @@ def new_game():
 		board_full = True
 		for x in range(6):
 			for y in range(6):
-				if board[x][y] == "":
+				if board[x][y] == " ":
 					board_full = False
 		if board_full:
 			game_over = True

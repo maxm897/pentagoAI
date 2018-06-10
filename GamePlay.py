@@ -12,10 +12,24 @@ top left, 3 as bottom right, and 4 as top right. """
 def new_board():
 	"""Returns an empty board"""
 
-	return [["", "", "", "", "", ""], ["", "", "", "", "", ""], ["", "", "", "", "", ""], ["", "", "", "", "", ""],
-	["", "", "", "", "", ""], ["", "", "", "", "", ""]]
-def boardToString(board): 
-	pass
+	return [[" ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " "],
+	[" ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " "]]
+def printBoard(board):
+	"""prints out the board in a legible format"""
+	print(str(board[0][5]) + "  |  " + str(board[1][5]) + "  |  " + str(board[2][5]) +
+		  "  |  " + str(board[3][5]) + "  |  " + str(board[4][5]) + "  |  " + str(board[5][5]))
+	print(str(board[0][4]) + "  |  " + str(board[1][4]) + "  |  " + str(board[2][4]) +
+		  "  |  " + str(board[3][4]) + "  |  " + str(board[4][4]) + "  |  " + str(board[5][4]))
+	print(str(board[0][3]) + "  |  " + str(board[1][3]) + "  |  " + str(board[2][3]) +
+		  "  |  " + str(board[3][3]) + "  |  " + str(board[4][3]) + "  |  " + str(board[5][3]))
+	print(str(board[0][2]) + "  |  " + str(board[1][2]) + "  |  " + str(board[2][2]) +
+		  "  |  " + str(board[3][2]) + "  |  " + str(board[4][2]) + "  |  " + str(board[5][2]))
+	print(str(board[0][1]) + "  |  " + str(board[1][1]) + "  |  " + str(board[2][1]) +
+		  "  |  " + str(board[3][1]) + "  |  " + str(board[4][1]) + "  |  " + str(board[5][1]))
+	print(str(board[0][0]) + "  |  " + str(board[1][0]) + "  |  " + str(board[2][0]) +
+		  "  |  " + str(board[3][0]) + "  |  " + str(board[4][0]) + "  |  " + str(board[5][0]))
+	return
+
 
 
 def rotate(board, direction, square_index):
