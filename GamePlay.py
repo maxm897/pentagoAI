@@ -14,6 +14,9 @@ def new_board():
 
 	return [["", "", "", "", "", ""], ["", "", "", "", "", ""], ["", "", "", "", "", ""], ["", "", "", "", "", ""],
 	["", "", "", "", "", ""], ["", "", "", "", "", ""]]
+def boardToString(board): 
+	pass
+
 
 def rotate(board, direction, square_index):
 	"""Returns a copy of the board with the indicated square rotated 90 degrees in the indicated direction

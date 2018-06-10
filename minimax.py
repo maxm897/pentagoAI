@@ -57,7 +57,7 @@ def getBestAction(board, depth):
 
 def isAvailable(board, x, y):
     
-    if(board[y][x]==0 or board[y][x]==1):
+    if(board[x][y]==0 or board[x][y]==1):
 
         return False
 
