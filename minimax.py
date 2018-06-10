@@ -17,7 +17,8 @@ def minimax(board, depth, bestaction):
                     for box in range(1,5):
                         for dir in ["R", "L"]:
                             a = GamePlay.Action(x,y,box,dir)
-                            val2 = maximin(GamePlay.take_action(board, a, "AI"), depth-1, bestaction)
+                            temp = deepcopy(board)
+                            val2 = maximin(GamePlay.take_action(temp, a, "AI"), depth-1, bestaction)
                             if (val2>val):
                                 val=val2
                                 bestaction.x_coordinate=x
@@ -41,7 +42,8 @@ def maximin(board, depth, bestaction):
                     for box in range(1, 5):
                         for dir in ["R", "L"]:
                             a = GamePlay.Action(x, y, box, dir)
-                            val2 = minimax(GamePlay.take_action(board, a, "Player"), depth - 1, bestaction)
+                            temp = deepcopy(board)
+                            val2 = minimax(GamePlay.take_action(temp, a, "Player"), depth - 1, bestaction)
                             if (val2 < val):
                                 val = val2
         return val
@@ -54,6 +56,9 @@ def getBestAction(board, depth):
     return bestaction
 
 def isAvailable(board, x, y):
-    if(board[x][y]==0 or board[x][y]==1):
+    
+    if(board[y][x]==0 or board[y][x]==1):
+
         return False
+
     return True

@@ -62,7 +62,7 @@ def new_game():
 			
 			##minimax.minimax(board, 3, action)
 			
-			action=minimax.getBestAction(board, depth)
+			action=minimax.getBestAction(board, int(depth))
 			board=GamePlay.take_action(board, action, "AI")
 			print("The AI has taken action: x=" + str(action.x_coordinate) + ", y=" + str(action.y_coordinate)
 				  + ", box=" + str(action.square_index) + ", direction=" + str(action.direction))
@@ -105,7 +105,7 @@ def valid(x, type):
 	
 	if (type==1):
 		try:
-			if (int(x)<1 or int(x)>5):
+			if (int(x)<0 or int(x)>5):
 				return False
 		except ValueError:
 			return False
