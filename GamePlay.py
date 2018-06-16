@@ -16,19 +16,37 @@ def new_board():
 	[" ", " ", " ", " ", " ", " "], [" ", " ", " ", " ", " ", " "]]
 def printBoard(board):
 	"""prints out the board in a legible format"""
-	print(str(board[0][5]) + "  |  " + str(board[1][5]) + "  |  " + str(board[2][5]) +
-		  "  |  " + str(board[3][5]) + "  |  " + str(board[4][5]) + "  |  " + str(board[5][5]))
-	print(str(board[0][4]) + "  |  " + str(board[1][4]) + "  |  " + str(board[2][4]) +
-		  "  |  " + str(board[3][4]) + "  |  " + str(board[4][4]) + "  |  " + str(board[5][4]))
-	print(str(board[0][3]) + "  |  " + str(board[1][3]) + "  |  " + str(board[2][3]) +
-		  "  |  " + str(board[3][3]) + "  |  " + str(board[4][3]) + "  |  " + str(board[5][3]))
-	print(str(board[0][2]) + "  |  " + str(board[1][2]) + "  |  " + str(board[2][2]) +
-		  "  |  " + str(board[3][2]) + "  |  " + str(board[4][2]) + "  |  " + str(board[5][2]))
-	print(str(board[0][1]) + "  |  " + str(board[1][1]) + "  |  " + str(board[2][1]) +
-		  "  |  " + str(board[3][1]) + "  |  " + str(board[4][1]) + "  |  " + str(board[5][1]))
-	print(str(board[0][0]) + "  |  " + str(board[1][0]) + "  |  " + str(board[2][0]) +
-		  "  |  " + str(board[3][0]) + "  |  " + str(board[4][0]) + "  |  " + str(board[5][0]))
+	print("\033[1m   -----------------------------------\033[0m")
+	print("5 \033[1m|  \033[0m" + returnMarble(str(board[0][5])) + "  |  " + returnMarble(str(board[1][5])) + "  |  " + returnMarble(str(board[2][5])) +
+		  "\033[1m  |  \033[0m" + returnMarble(str(board[3][5])) + "  |  " + returnMarble(str(board[4][5])) + "  |  " + returnMarble(str(board[5][5])) +"\033[1m  |\033[0m")
+	print("  \033[1m|\033[0m-----------------\033[1m|\033[0m-----------------\033[1m|\033[0m")
+	print("4 \033[1m|  \033[0m" +returnMarble(str(board[0][4])) + "  |  " + returnMarble(str(board[1][4])) + "  |  " + returnMarble(str(board[2][4])) +
+		  "\033[1m  |  \033[0m" + returnMarble(str(board[3][4])) + "  |  " + returnMarble(str(board[4][4])) + "  |  " + returnMarble(str(board[5][4]))+"\033[1m  |\033[0m")
+	print("  \033[1m|\033[0m-----------------\033[1m|\033[0m-----------------\033[1m|\033[0m")
+	print("3 \033[1m|  \033[0m" +returnMarble(str(board[0][3])) + "  |  " + returnMarble(str(board[1][3])) + "  |  " + returnMarble(str(board[2][3])) +
+		  "\033[1m  |  \033[0m" + returnMarble(str(board[3][3])) + "  |  " + returnMarble(str(board[4][3])) + "  |  " + returnMarble(str(board[5][3]))+"\033[1m  |\033[0m                  2 | 4                ")
+	print("\033[1m  |-----------------|-----------------|\033[0m                  --|--                ")
+	print("2 \033[1m|  \033[0m" +returnMarble(str(board[0][2])) + "  |  " + returnMarble(str(board[1][2])) + "  |  " + returnMarble(str(board[2][2])) +
+		  "\033[1m  |  \033[0m" + returnMarble(str(board[3][2])) + "  |  " + returnMarble(str(board[4][2])) + "  |  " + returnMarble(str(board[5][2]))+"\033[1m  |\033[0m                  1 | 3                ")
+	print("  \033[1m|\033[0m-----------------\033[1m|\033[0m-----------------\033[1m|\033[0m")
+	print("1 \033[1m|  \033[0m" + returnMarble(str(board[0][1])) + "  |  " + returnMarble(str(board[1][1])) + "  |  " + returnMarble(str(board[2][1])) +
+		  "\033[1m  |  \033[0m" + returnMarble(str(board[3][1])) + "  |  " + returnMarble(str(board[4][1])) + "  |  " + returnMarble(str(board[5][1]))+"\033[1m  |\033[0m")
+	print("  \033[1m|\033[0m-----------------\033[1m|\033[0m-----------------\033[1m|\033[0m")
+	print("0 \033[1m|  \033[0m" + returnMarble(str(board[0][0])) + "  |  " + returnMarble(str(board[1][0])) + "  |  " + returnMarble(str(board[2][0])) +
+		  "\033[1m  |  \033[0m" + returnMarble(str(board[3][0])) + "  |  " + returnMarble(str(board[4][0])) + "  |  " + returnMarble(str(board[5][0]))+"\033[1m  |\033[0m")
+	print("\033[1m   -----------------------------------\033[0m")
+	print("     0     1     2     3     4     5")
 	return
+
+def returnMarble(number):
+	"""Returns a string, red X for AI and black X for human player"""
+	if (number =="1"):
+		return "\033[91mX\033[0m"
+	elif (number == "0"):
+		return "X"
+	else:
+		return number
+	
 
 
 

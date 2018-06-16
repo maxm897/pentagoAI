@@ -14,7 +14,7 @@ def main():
 	new_game()
 
 def new_game():
-	depth = input("To what depth would you like the AI to search?")
+	depth = input("To what depth would you like the AI to search? ")
 	while (valid(depth, 4)==False):
 		depth = input("invalid depth, please input a non-negative integer ")
 	turn = input('Would you like to go first? (y/n) ')
