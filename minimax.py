@@ -53,6 +53,12 @@ def getBestAction(board, depth):
     bestaction = GamePlay.Action(1,1,1,"L")
     temp = deepcopy(board)
     minimax(temp, depth, bestaction)
+    if (bestaction == GamePlay.Action(1,1,1, "L")):
+        if (not(isAvailable(board, 1, 1))):
+            for x in range(0,6):
+                for y in range(0,6):
+                    if (isAvailable(board, x, y)):
+                        bestaction=GamePlay.Action(x,y,1, "L")
     return bestaction
 
 def isAvailable(board, x, y):
