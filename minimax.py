@@ -50,15 +50,12 @@ def maximin(board, depth, bestaction):
 
 
 def getBestAction(board, depth):
-    bestaction = GamePlay.Action(1,1,1,"L")
+    
+    bestaction = findAvailableAction(board)
+    print("best action before minimax is " + str(bestaction.x_coordinate) + str(bestaction.y_coordinate))
     temp = deepcopy(board)
     minimax(temp, depth, bestaction)
-    if (bestaction == GamePlay.Action(1,1,1, "L")):
-        if (not(isAvailable(board, 1, 1))):
-            for x in range(0,6):
-                for y in range(0,6):
-                    if (isAvailable(board, x, y)):
-                        bestaction=GamePlay.Action(x,y,1, "L")
+    print("best action after minimax is " + str(bestaction.x_coordinate) + str(bestaction.y_coordinate))
     return bestaction
 
 def isAvailable(board, x, y):
@@ -68,3 +65,9 @@ def isAvailable(board, x, y):
         return False
 
     return True
+
+def findAvailableAction(board):
+    for x in range (0,6):
+        for y in range(0,6):
+            if isAvailable(board, x, y):
+                return GamePlay.Action(x, y, 1, "L")
