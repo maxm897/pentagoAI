@@ -52,10 +52,11 @@ def maximin(board, depth, bestaction):
 def getBestAction(board, depth):
     
     bestaction = findAvailableAction(board)
-    print("best action before minimax is " + str(bestaction.x_coordinate) + str(bestaction.y_coordinate))
+    copy = GamePlay.Action(bestaction.x_coordinate, bestaction.y_coordinate, bestaction.square_index, bestaction.direction)
     temp = deepcopy(board)
     minimax(temp, depth, bestaction)
-    print("best action after minimax is " + str(bestaction.x_coordinate) + str(bestaction.y_coordinate))
+    if bestaction.equals(copy):
+        print("the AI has used an arbitrary random move")
     return bestaction
 
 def isAvailable(board, x, y):

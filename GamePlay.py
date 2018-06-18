@@ -150,9 +150,20 @@ class Action(object):
 
 
 
-
-
-
+	def equals(self, action):
+		"""method of class Action that determines if an action is equal to another action"""
+		
+		assert(isinstance(action, Action))
+		
+		if not(self.x_coordinate==action.x_coordinate):
+			return False
+		if not(self.y_coordinate==action.y_coordinate):
+			return False
+		if not(self.square_index==action.square_index):
+			return False
+		if not(self.direction==action.direction):
+			return False
+		return True
 
 
 
