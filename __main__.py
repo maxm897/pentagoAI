@@ -119,7 +119,7 @@ def valid(x, type):
 			return False
 		
 
-	elif (type==3 and x!="R" and x!="L"):
+	elif (type==3 and x not in ["R", "r", "L", "l"]):
 		return False
 	
 	elif (type==4):

@@ -75,7 +75,7 @@ def rotate(board, direction, square_index):
 		vertical_offset = 3
 		horizontal_offset = 3
 
-	if direction == "R":
+	if direction in ["R", "r"]:
 
 		temp1 = board[2 + horizontal_offset][1 + vertical_offset]
 		temp2 = board[1 + horizontal_offset][0 + vertical_offset]
@@ -93,7 +93,7 @@ def rotate(board, direction, square_index):
 		board[0 + horizontal_offset][0 + vertical_offset] = temp2
 		board[0 + horizontal_offset][2 + vertical_offset] = temp1
 
-	if direction == "L":
+	if direction in ["L", "l"]:
 
 		temp1 = board[0 + horizontal_offset][1 + vertical_offset]
 		temp2 = board[1 + horizontal_offset][0 + vertical_offset]
