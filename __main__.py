@@ -114,7 +114,6 @@ def new_game():
 
 
 def valid(x, type):
-<<<<<<< HEAD
 	"""helper function determining if input is valid
 	paramter x = the input
 	parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction, 4 is a depth level	"""
@@ -147,37 +146,7 @@ def valid(x, type):
 		
 
 	return True
-=======
-    """helper function determining if input is valid
-    paramter x = the input
-    parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction, 4 is a depth level	"""
-    assert (type in [1, 2, 3, 4])
->>>>>>> 17b11abf75d58167ecab80905da38981b5dae7b1
-
-    if (type == 1):
-        try:
-            if (int(x) < 0 or int(x) > 5):
-                return False
-        except ValueError:
-            return False
-    elif (type == 2):
-        try:
-            if (int(x) < 1 or int(x) > 4):
-                return False
-        except ValueError:
-            return False
-
-    elif (type == 3 and x != "R" and x != "L"):
-        return False
-
-    elif (type == 4):
-        try:
-            if (int(x) < 0):
-                return False
-        except ValueError:
-            return False
-
-    return True
+    
 
 
 if __name__ == "__main__":
