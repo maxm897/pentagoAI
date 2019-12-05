@@ -2,14 +2,15 @@ import evaluate
 import GamePlay
 from copy import copy, deepcopy
 import numpy as np
+import operator
 
 
 bestaction = None
 
-def minimax(board, depth, bestaction):
-    eval = evaluate.evaluate(board)
-    if ((eval==-9999999) or (eval==9999999) or (eval==-0.5) or (depth==0)):
-        return eval
+def minimax(board, depth, alpha, beta, bestaction, is_top):
+    initial_eval = evaluate.evaluate(board)
+    if ((initial_eval==-9999999) or (initial_eval==9999999) or (initial_eval==-0.5) or (depth==0)):
+        return initial_eval
     else:
         hashes_seen = set()
         val = evaluate.MINVAL
@@ -23,22 +24,26 @@ def minimax(board, depth, bestaction):
                             new_board = GamePlay.take_action(temp, a, "AI")
                             if isUnique(symmetricBoards(new_board), hashes_seen):
                                 hashes_seen.add(hash(str(new_board)))
-                                val2 = maximin(new_board, depth-1, bestaction)
+                                val2 = maximin(new_board, depth-1, alpha, beta, bestaction)
                                 if (val2>val):
                                     val=val2
-                                    bestaction.x_coordinate=x
-                                    bestaction.y_coordinate = y
-                                    bestaction.square_index=box
-                                    bestaction.direction=direction
+                                    if is_top:
+                                        bestaction.x_coordinate=x
+                                        bestaction.y_coordinate = y
+                                        bestaction.square_index=box
+                                        bestaction.direction=direction
+                                alpha = max(alpha, val)
+                                if alpha >= beta:
+                                    return val
         return val
 
 
 
 
-def maximin(board, depth, bestaction):
-    eval = evaluate.evaluate(board)
-    if ((eval == -9999999) or (eval == 9999999) or (eval == -0.5) or (depth == 0)):
-        return eval
+def maximin(board, depth, alpha, beta, bestaction):
+    initial_eval = evaluate.evaluate(board)
+    if ((initial_eval == -9999999) or (initial_eval == 9999999) or (initial_eval == -0.5) or (depth == 0)):
+        return initial_eval
     else:
         hashes_seen = set()
         val = evaluate.MAXVAL
@@ -52,9 +57,12 @@ def maximin(board, depth, bestaction):
                             new_board = GamePlay.take_action(temp, a, "Player")
                             if isUnique(symmetricBoards(new_board), hashes_seen):
                                 hashes_seen.add(hash(str(new_board)))
-                                val2 = minimax(new_board, depth - 1, bestaction)
+                                val2 = minimax(new_board, depth - 1, alpha, beta, bestaction, False)
                                 if (val2 < val):
                                     val = val2
+                                beta = min(beta, val)
+                                if alpha >= beta:
+                                    return val
         return val
 
 
@@ -63,7 +71,7 @@ def getBestAction(board, depth):
     bestaction = findAvailableAction(board)
     print("best action before minimax is " + str(bestaction.x_coordinate) + str(bestaction.y_coordinate))
     temp = deepcopy(board)
-    minimax(temp, depth, bestaction)
+    minimax(temp, depth, evaluate.MINVAL, evaluate.MAXVAL, bestaction, True)
     print("best action after minimax is " + str(bestaction.x_coordinate) + str(bestaction.y_coordinate))
     return bestaction
 
@@ -107,6 +115,7 @@ def isUnique(symmetries, set):
         if hash(str(board)) in set:
             return False
     return True
+
 
 
 
