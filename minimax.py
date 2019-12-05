@@ -17,8 +17,8 @@ def minimax(board, depth, bestaction):
             for y in range(0,6):
                 if isAvailable(board, x, y):
                     for box in range(1,5):
-                        for dir in ["R", "L"]:
-                            a = GamePlay.Action(x,y,box,dir)
+                        for direction in ["R", "L"]:
+                            a = GamePlay.Action(x,y,box,direction)
                             temp = deepcopy(board)
                             new_board = GamePlay.take_action(temp, a, "AI")
                             if isUnique(symmetricBoards(new_board), hashes_seen):
@@ -29,7 +29,7 @@ def minimax(board, depth, bestaction):
                                     bestaction.x_coordinate=x
                                     bestaction.y_coordinate = y
                                     bestaction.square_index=box
-                                    bestaction.direction=dir
+                                    bestaction.direction=direction
         return val
 
 
@@ -46,16 +46,16 @@ def maximin(board, depth, bestaction):
             for y in range(0, 6):
                 if (isAvailable(board, x, y)):
                     for box in range(1, 5):
-                        for dir in ["R", "L"]:
-                            a = GamePlay.Action(x, y, box, dir)
+                        for direction in ["R", "L"]:
+                            a = GamePlay.Action(x, y, box, direction)
                             temp = deepcopy(board)
-                            new_board = GamePlay.take_action(temp, a, "AI")
+                            new_board = GamePlay.take_action(temp, a, "Player")
                             if isUnique(symmetricBoards(new_board), hashes_seen):
                                 hashes_seen.add(hash(str(new_board)))
-                                val2 = minimax(GamePlay.take_action(temp, a, "Player"), depth - 1, bestaction)
+                                val2 = minimax(new_board, depth - 1, bestaction)
                                 if (val2 < val):
                                     val = val2
-            return val
+        return val
 
 
 def getBestAction(board, depth):
@@ -96,9 +96,9 @@ def symmetricBoards(board):
     output.append(np.flip(mid_board, axis=0).tolist())
     output.append(np.flip(mid_board, axis=1).tolist())
 
-    #flips across the two diagonals. Commented out because they slow the program down
-    # output.append(np.flip(np.rot90(mid_board), axis=0).tolist())
-    # output.append(np.flip(np.rot90(mid_board), axis=1).tolist())
+    #flips across the two diagonals
+    output.append(np.flip(np.rot90(mid_board), axis=0).tolist())
+    output.append(np.flip(np.rot90(mid_board), axis=1).tolist())
 
     return output
 
