@@ -39,6 +39,36 @@ def evaluate(board):
 	AI_sequence4 = 0
 	AI_sequence5 = 0
 
+
+
+
+	Player_cross2_weak = 0
+	Player_cross2_strong = 0
+	Player_cross3_weak = 0
+	Player_cross3_strong = 0
+	Player_cross4 = 0
+
+	AI_cross2_weak = 0
+	AI_cross2_strong = 0
+	AI_cross3_weak = 0
+	AI_cross3_strong = 0
+	AI_cross4 = 0
+
+
+
+	Player_diagonal2_weak = 0
+	Player_diagonal2_strong = 0
+	Player_diagonal3_weak = 0
+	Player_diagonal3_strong = 0
+	Player_diagonal4 = 0
+
+	AI_diagonal2_weak = 0
+	AI_diagonal2_strong = 0
+	AI_diagonal3_weak = 0
+	AI_diagonal3_strong = 0
+	AI_diagonal4 = 0
+
+
 	#Find runs in every column
 	for x in range(6):
 		for y in range(6):
@@ -50,26 +80,50 @@ def evaluate(board):
 					run_length+=1
 				if current_type == 0:
 					if run_length == 2:
-						Player_sequence2_strong+=1
+						if x in [1, 4]:
+							Player_cross2_strong+=1
+						else:
+							Player_sequence2_strong+=1
 					if run_length == 3:
 						if board[x][y] == current_type:
-							Player_sequence3_strong+=1
+							if x in [1,4]:
+								Player_cross3_strong+=1
+							else:
+								Player_sequence3_strong+=1
 						else:
-							Player_sequence3_weak+=1
+							if x in [1,4]:
+								Player_cross3_weak+=1
+							else:
+								Player_sequence3_weak+=1
 					if run_length == 4:
-						Player_sequence4+=1
+						if x in [1,4]:
+							Player_cross4+=1
+						else:
+							Player_sequence4+=1
 					if run_length > 4:
 						Player_sequence5+=1
 				if current_type == 1:
 					if run_length == 2:
-						AI_sequence2_strong+=1
+						if x in [1,4]:
+							AI_cross2_strong+=1
+						else:
+							AI_sequence2_strong+=1
 					if run_length == 3:
 						if board[x][y] == current_type:
-							AI_sequence3_strong+=1
+							if x in [1,4]:
+								AI_cross3_strong+=1
+							else:
+								AI_sequence3_strong+=1
 						else:
-							AI_sequence3_weak+=1
+							if x in [1,4]:
+								AI_cross3_weak+=1
+							else:
+								AI_sequence3_weak+=1
 					if run_length == 4:
-						AI_sequence4+=1
+						if x in [1,4]:
+							AI_cross4+=1
+						else:	
+							AI_sequence4+=1
 					if run_length > 4:
 						AI_sequence5+=1
 			else:
@@ -79,31 +133,61 @@ def evaluate(board):
 					if current_type == 0:
 						if run_length == 2:
 							if y == 4:
-								Player_sequence2_weak+=1
+								if x in [1,4]:
+									Player_cross2_weak+=1
+								else:
+									Player_sequence2_weak+=1
 							else:
-								Player_sequence2_strong+=1
+								if x in [1,4]:
+									Player_cross2_strong+=1
+								else:
+									Player_sequence2_strong+=1
 						if run_length == 3:
 							if y == 3:
-								Player_sequence3_strong+=1
+								if x in [1,4]:
+									Player_cross3_strong+=1
+								else:
+									Player_sequence3_strong+=1
 							else:
-								Player_sequence3_weak+=1
+								if x in [1,4]:
+									Player_cross3_weak+=1
+								else:	
+									Player_sequence3_weak+=1
 						if run_length == 4:
-							Player_sequence4+=1
+							if x in [1,4]:
+								Player_cross4+=1
+							else:
+								Player_sequence4+=1
 						if run_length > 4:
 							Player_sequence5+=1
 					if current_type == 1:
 						if run_length == 2:
 							if y == 4:
-								AI_sequence2_weak+=1
+								if x in [1,4]:
+									AI_cross2_weak+=1
+								else:
+									AI_sequence2_weak+=1
 							else:
-								AI_sequence2_strong+=1
+								if x in [1,4]:
+									AI_cross2_strong+=1
+								else:
+									AI_sequence2_strong+=1
 						if run_length == 3:
 							if y == 3:
-								AI_sequence3_strong+=1
+								if x in [1,4]:
+									AI_cross3_strong+=1
+								else:
+									AI_sequence3_strong+=1
 							else:
-								AI_sequence3_weak+=1
+								if x in [1,4]:
+									AI_cross3_weak+=1
+								else:
+									AI_sequence3_weak+=1
 						if run_length == 4:
-							AI_sequence4+=1
+							if x in [1,4]:
+								AI_cross4+=1
+							else:
+								AI_sequence4+=1
 						if run_length > 4:
 							AI_sequence5+=1
 
@@ -111,74 +195,128 @@ def evaluate(board):
 					run_length = 1
 
 	#find runs in every row
-	for x in range(6):
-		for y in range(6):
-			if y == 0:
-				current_type = board[y][x]
+	for y in range(6):
+		for x in range(6):
+			if x == 0:
+				current_type = board[x][y]
 				run_length = 1
-			elif y == 5:
-				if board[y][x] == current_type:
+			elif x == 5:
+				if board[x][y] == current_type:
 					run_length+=1
 				if current_type == 0:
 					if run_length == 2:
-						Player_sequence2_strong+=1
-					if run_length == 3:
-						if board[y][x] == current_type:
-							Player_sequence3_strong+=1
+						if y in [1, 4]:
+							Player_cross2_strong+=1
 						else:
-							Player_sequence3_weak+=1
+							Player_sequence2_strong+=1
+					if run_length == 3:
+						if board[x][y] == current_type:
+							if y in [1,4]:
+								Player_cross3_strong+=1
+							else:
+								Player_sequence3_strong+=1
+						else:
+							if y in [1,4]:
+								Player_cross3_weak+=1
+							else:
+								Player_sequence3_weak+=1
 					if run_length == 4:
-						Player_sequence4+=1
+						if y in [1,4]:
+							Player_cross4+=1
+						else:
+							Player_sequence4+=1
 					if run_length > 4:
 						Player_sequence5+=1
 				if current_type == 1:
 					if run_length == 2:
-						AI_sequence2_strong+=1
-					if run_length == 3:
-						if board[y][x] == current_type:
-							AI_sequence3_strong+=1
+						if y in [1,4]:
+							AI_cross2_strong+=1
 						else:
-							AI_sequence3_weak+=1
+							AI_sequence2_strong+=1
+					if run_length == 3:
+						if board[x][y] == current_type:
+							if y in [1,4]:
+								AI_cross3_strong+=1
+							else:
+								AI_sequence3_strong+=1
+						else:
+							if y in [1,4]:
+								AI_cross3_weak+=1
+							else:
+								AI_sequence3_weak+=1
 					if run_length == 4:
-						AI_sequence4+=1
+						if y in [1,4]:
+							AI_cross4+=1
+						else:	
+							AI_sequence4+=1
 					if run_length > 4:
 						AI_sequence5+=1
 			else:
-				if board[y][x] == current_type:
+				if board[x][y] == current_type:
 					run_length+=1
 				else:
 					if current_type == 0:
 						if run_length == 2:
-							if y == 4:
-								Player_sequence2_weak+=1
+							if x == 4:
+								if y in [1,4]:
+									Player_cross2_weak+=1
+								else:
+									Player_sequence2_weak+=1
 							else:
-								Player_sequence2_strong+=1
+								if y in [1,4]:
+									Player_cross2_strong+=1
+								else:
+									Player_sequence2_strong+=1
 						if run_length == 3:
-							if y == 3:
-								Player_sequence3_strong+=1
+							if x == 3:
+								if y in [1,4]:
+									Player_cross3_strong+=1
+								else:
+									Player_sequence3_strong+=1
 							else:
-								Player_sequence3_weak+=1
+								if y in [1,4]:
+									Player_cross3_weak+=1
+								else:	
+									Player_sequence3_weak+=1
 						if run_length == 4:
-							Player_sequence4+=1
+							if y in [1,4]:
+								Player_cross4+=1
+							else:
+								Player_sequence4+=1
 						if run_length > 4:
 							Player_sequence5+=1
 					if current_type == 1:
 						if run_length == 2:
-							if y == 4:
-								AI_sequence2_weak+=1
+							if x == 4:
+								if y in [1,4]:
+									AI_cross2_weak+=1
+								else:
+									AI_sequence2_weak+=1
 							else:
-								AI_sequence2_strong+=1
+								if y in [1,4]:
+									AI_cross2_strong+=1
+								else:
+									AI_sequence2_strong+=1
 						if run_length == 3:
-							if y == 3:
-								AI_sequence3_strong+=1
+							if x == 3:
+								if y in [1,4]:
+									AI_cross3_strong+=1
+								else:
+									AI_sequence3_strong+=1
 							else:
-								AI_sequence3_weak+=1
+								if y in [1,4]:
+									AI_cross3_weak+=1
+								else:
+									AI_sequence3_weak+=1
 						if run_length == 4:
-							AI_sequence4+=1
+							if y in [1,4]:
+								AI_cross4+=1
+							else:
+								AI_sequence4+=1
 						if run_length > 4:
 							AI_sequence5+=1
 
-					current_type = board[y][x]
+					current_type = board[x][y]
 					run_length = 1
 
 	#Find runs in each of the 6 possible game-winning diagonals 
@@ -262,26 +400,26 @@ def evaluate(board):
 				run_length+=1
 			if current_type == 0:
 				if run_length == 2:
-					Player_sequence2_strong+=1
+					Player_diagonal2_strong+=1
 				if run_length == 3:
 					if board[x][y] == current_type:
-						Player_sequence3_strong+=1
+						Player_diagonal3_strong+=1
 					else:
-						Player_sequence3_weak+=1
+						Player_diagonal3_weak+=1
 				if run_length == 4:
-					Player_sequence4+=1
+					Player_diagonal4+=1
 				if run_length > 4:
 					Player_sequence5+=1
 			if current_type == 1:
 				if run_length == 2:
-					AI_sequence2_strong+=1
+					AI_diagonal2_strong+=1
 				if run_length == 3:
 					if board[x][y] == current_type:
-						AI_sequence3_strong+=1
+						AI_diagonal3_strong+=1
 					else:
-						AI_sequence3_weak+=1
+						AI_diagonal3_weak+=1
 				if run_length == 4:
-					AI_sequence4+=1
+					AI_diagonal4+=1
 				if run_length > 4:
 					AI_sequence5+=1
 		else:
@@ -291,31 +429,31 @@ def evaluate(board):
 				if current_type == 0:
 					if run_length == 2:
 						if x == 4:
-							Player_sequence2_weak+=1
+							Player_diagonal2_weak+=1
 						else:
-							Player_sequence2_strong+=1
+							Player_diagonal2_strong+=1
 					if run_length == 3:
 						if x == 3:
-							Player_sequence3_strong+=1
+							Player_diagonal3_strong+=1
 						else:
-							Player_sequence3_weak+=1
+							Player_diagonal3_weak+=1
 					if run_length == 4:
-						Player_sequence4+=1
+						Player_diagonal4+=1
 					if run_length > 4:
 						Player_sequence5+=1
 				if current_type == 1:
 					if run_length == 2:
 						if x == 4:
-							AI_sequence2_weak+=1
+							AI_diagonal2_weak+=1
 						else:
-							AI_sequence2_strong+=1
+							AI_diagonal2_strong+=1
 					if run_length == 3:
 						if x == 3:
-							AI_sequence3_strong+=1
+							AI_diagonal3_strong+=1
 						else:
-							AI_sequence3_weak+=1
+							AI_diagonal3_weak+=1
 					if run_length == 4:
-						AI_sequence4+=1
+						AI_diagonal4+=1
 
 					if run_length > 4:
 						AI_sequence5+=1
@@ -472,26 +610,26 @@ def evaluate(board):
 				run_length+=1
 			if current_type == 0:
 				if run_length == 2:
-					Player_sequence2_strong+=1
+					Player_diagonal2_strong+=1
 				if run_length == 3:
 					if board[x][y] == current_type:
-						Player_sequence3_strong+=1
+						Player_diagonal3_strong+=1
 					else:
-						Player_sequence3_weak+=1
+						Player_diagonal3_weak+=1
 				if run_length == 4:
-					Player_sequence4+=1
+					Player_diagonal4+=1
 				if run_length > 4:
 					Player_sequence5+=1
 			if current_type == 1:
 				if run_length == 2:
-					AI_sequence2_strong+=1
+					AI_diagonal2_strong+=1
 				if run_length == 3:
 					if board[x][y] == current_type:
-						AI_sequence3_strong+=1
+						AI_diagonal3_strong+=1
 					else:
-						AI_sequence3_weak+-1
+						AI_diagonal3_weak+-1
 				if run_length == 4:
-					AI_sequence4+=1
+					AI_diagonal4+=1
 				if run_length > 4:
 					AI_sequence5+=1
 		else:
@@ -501,31 +639,31 @@ def evaluate(board):
 				if current_type == 0:
 					if run_length == 2:
 						if x == 4:
-							Player_sequence2_weak+=1
+							Player_diagonal2_weak+=1
 						else:
-							Player_sequence2_strong+=1
+							Player_diagonal2_strong+=1
 					if run_length == 3:
 						if x == 3:
-							Player_sequence3_strong+=1
+							Player_diagonal3_strong+=1
 						else:
-							Player_sequence3_weak+=1
+							Player_diagonal3_weak+=1
 					if run_length == 4:
-						Player_sequence4+=1
+						Player_diagonal4+=1
 					if run_length > 4:
 						Player_sequence5+=1
 				if current_type == 1:
 					if run_length == 2:
 						if x == 4:
-							AI_sequence2_weak+=1
+							AI_diagonal2_weak+=1
 						else:
-							AI_sequence2_strong+=1
+							AI_diagonal2_strong+=1
 					if run_length == 3:
 						if x == 3:
-							AI_sequence3_strong+=1
+							AI_diagonal3_strong+=1
 						else:
-							AI_sequence3_weak+=1
+							AI_diagonal3_weak+=1
 					if run_length == 4:
-						AI_sequence4+=1
+						AI_diagonal4+=1
 					if run_length > 4:
 						AI_sequence5+=1
 				current_type = board[x][y]
@@ -636,6 +774,35 @@ def evaluate(board):
 	AI_score = AI_sequence2_weak*SEQUENCE2_WEAK + AI_sequence2_strong*SEQUENCE2_STRONG + \
 		AI_sequence3_weak*SEQUENCE3_WEAK + AI_sequence3_strong*SEQUENCE3_STRONG + \
 		AI_sequence4*SEQUENCE4 + AI_centers*CENTER_BONUS
+
+	#Add diagonal scores
+	Player_diagonal = ((board[1][1] == 0 and board[4][4] == 0) or (board[1][4] == 0 and board[4][1] == 0))
+	AI_diagonal = ((board[1][1] == 1 and board[4][4] == 1) or (board[1][4] == 1 and board[4][1] == 1))
+
+	if Player_diagonal:
+		Player_score += Player_diagonal2_weak*SEQUENCE2_WEAK + Player_diagonal2_strong*SEQUENCE2_STRONG + \
+		Player_diagonal3_weak*SEQUENCE3_WEAK + Player_diagonal3_strong*SEQUENCE3_STRONG + \
+		Player_diagonal4*SEQUENCE4
+	if AI_diagonal:
+		AI_score += AI_diagonal2_weak*SEQUENCE2_WEAK + AI_diagonal2_strong*SEQUENCE2_STRONG + \
+		AI_diagonal3_weak*SEQUENCE3_WEAK + AI_diagonal3_strong*SEQUENCE3_STRONG + \
+		AI_diagonal4*SEQUENCE4
+
+	#Add cross scores
+	Player_cross = (board[1][1]==0 and board[4][1]==0) or (board[4][1]==0 and board[4][4]==0) or (board[4][4]==0 and board[1][4]==0) or (board[1][4]==0 and board[1][1]==0)
+	AI_cross = (board[1][1]==1 and board[4][1]==1) or (board[4][1]==1 and board[4][4]==1) or (board[4][4]==1 and board[1][4]==1) or (board[1][4]==1 and board[1][1]==1)
+
+	if Player_cross:
+		Player_score += Player_cross2_weak*SEQUENCE2_WEAK + Player_cross2_strong*SEQUENCE2_STRONG + \
+		Player_cross3_weak*SEQUENCE3_WEAK + Player_cross3_strong*SEQUENCE3_STRONG + \
+		Player_cross4*SEQUENCE4
+
+	if AI_cross:
+		AI_score += AI_cross2_weak*SEQUENCE2_WEAK + AI_cross2_strong*SEQUENCE2_STRONG + \
+		AI_cross3_weak*SEQUENCE3_WEAK + AI_cross3_strong*SEQUENCE3_STRONG + \
+		AI_cross4*SEQUENCE4
+
+
 
 	return AI_score - Player_score
 
