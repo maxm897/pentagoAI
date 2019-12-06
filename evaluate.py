@@ -10,6 +10,8 @@ SEQUENCE2_STRONG = 3
 SEQUENCE3_WEAK = 6
 SEQUENCE3_STRONG = 8
 SEQUENCE4 = 10
+CENTER_SPREAD1 = .5
+CENTER_SPREAD2 = .25
 MINVAL = -9999999
 MAXVAL = 9999999
 
@@ -39,9 +41,7 @@ def evaluate(board):
 	AI_sequence4 = 0
 	AI_sequence5 = 0
 
-
-
-
+	#Specialty measures
 	Player_cross2_weak = 0
 	Player_cross2_strong = 0
 	Player_cross3_weak = 0
@@ -54,8 +54,6 @@ def evaluate(board):
 	AI_cross3_strong = 0
 	AI_cross4 = 0
 
-
-
 	Player_diagonal2_weak = 0
 	Player_diagonal2_strong = 0
 	Player_diagonal3_weak = 0
@@ -67,6 +65,12 @@ def evaluate(board):
 	AI_diagonal3_weak = 0
 	AI_diagonal3_strong = 0
 	AI_diagonal4 = 0
+
+	Player_center_spread1 = 0
+	Player_center_spread2 = 0
+
+	AI_center_spread1 = 0
+	AI_center_spread2 = 0
 
 
 	#Find runs in every column
@@ -768,12 +772,30 @@ def evaluate(board):
 	if board[4][4] == 1:
 		AI_centers+=1
 
+	#determine center spread for each player
+	for x in range(6):
+		for y in range(6):
+			if board[x][y] == 1:
+				if center_spread(x, y) == 1:
+					AI_center_spread1 += 1
+				if center_spread(x, y) == 2:
+					AI_center_spread2 += 1
+			if board[x][y] == 0:
+				if center_spread(x, y) == 1:
+					Player_center_spread1 += 1
+				if center_spread(x, y) == 2:
+					Player_center_spread2 += 1
+
+
+
 	Player_score = Player_sequence2_weak*SEQUENCE2_WEAK + Player_sequence2_strong*SEQUENCE2_STRONG + \
 		Player_sequence3_weak*SEQUENCE3_WEAK + Player_sequence3_strong*SEQUENCE3_STRONG + \
-		Player_sequence4*SEQUENCE4 + Player_centers*CENTER_BONUS
+		Player_sequence4*SEQUENCE4 + Player_centers*CENTER_BONUS + Player_center_spread1*CENTER_SPREAD1 + \
+		Player_center_spread2*CENTER_SPREAD2
 	AI_score = AI_sequence2_weak*SEQUENCE2_WEAK + AI_sequence2_strong*SEQUENCE2_STRONG + \
 		AI_sequence3_weak*SEQUENCE3_WEAK + AI_sequence3_strong*SEQUENCE3_STRONG + \
-		AI_sequence4*SEQUENCE4 + AI_centers*CENTER_BONUS
+		AI_sequence4*SEQUENCE4 + AI_centers*CENTER_BONUS + AI_center_spread1*CENTER_SPREAD1 + \
+		AI_center_spread2*CENTER_SPREAD2
 
 	#Add diagonal scores
 	Player_diagonal = ((board[1][1] == 0 and board[4][4] == 0) or (board[1][4] == 0 and board[4][1] == 0))
@@ -807,38 +829,11 @@ def evaluate(board):
 	return AI_score - Player_score
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def center_spread(x, y):
+	if x in [0, 5] or y in [0, 5]:
+		return -1
+	if x in [1, 4] or y in [1, 4]:
+		return 2
+	return 1 
 
 
