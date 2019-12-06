@@ -116,7 +116,7 @@ def new_game():
 def valid(x, type):
     """helper function determining if input is valid
     paramter x = the input
-    parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction, 4 is a depth level	"""
+    parameter type is the type of input, 1 is a coordinate, 2 is a box, 3 is a direction, 4 is a depth level    """
     assert (type in [1, 2, 3, 4])
 
     if (type == 1):

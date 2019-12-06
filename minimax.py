@@ -126,6 +126,7 @@ def isUnique(symmetries, set):
         if hash(str(board)) in set:
             return False
     return True
+        
 
 def generate_quick_best(board):
     actions = []
