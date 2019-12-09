@@ -162,6 +162,7 @@ def evaluate(board):
 								Player_cross4+=1
 							else:
 								Player_sequence4+=1
+
 						if run_length > 4:
 							Player_sequence5+=1
 					if current_type == 1:
