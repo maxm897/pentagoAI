@@ -19,6 +19,7 @@ def main():
 
 
 def new_game():
+    board = GamePlay.new_board()
     depth = input("To what depth would you like the AI to search? ")
     while (valid(depth, 4) == False):
         depth = input("invalid depth, please input a non-negative integer ")
@@ -27,10 +28,10 @@ def new_game():
         print('You have entered an invalid input. Type either y or n and then press enter')
         turn = input('Would you like to go first? (y/n) ')
     if turn == 'y':
+        GamePlay.printBoard(board)
         turn = 0
     if turn == 'n':
         turn = 1
-    board = GamePlay.new_board()
 
     game_over = False
     while not game_over:
