@@ -7,18 +7,18 @@
 CENTER_BONUS = 5
 SEQUENCE2_WEAK = 2
 SEQUENCE2_STRONG = 3
-SEQUENCE3_WEAK = 6
-SEQUENCE3_STRONG = 8
-SEQUENCE4 = 10
-CENTER_SPREAD1 = .5
-CENTER_SPREAD2 = .25
+SEQUENCE3_WEAK = 10
+SEQUENCE3_STRONG = 15
+SEQUENCE4 = 20
+CENTER_SPREAD1 = .05
+CENTER_SPREAD2 = .025
 MINVAL = -9999999
 MAXVAL = 9999999
 
 def evaluate(board):
 	"""Returns an float representing the relatve strength of the board. Positive values represent a stronger
 	position for the AI and negative values represent a stronger position for the player. A return value of 9999999
-	denotes a win for the AI. A return value of -9999999 denotes a win for the Player. A return value of -.5 denotes a tie.
+	denotes a win for the AI. A return value of -9999999 denotes a win for the Player. A return value of -.005 denotes a tie.
 
 	Its long. Its ugly. But I can't think of any other way to evaluate a pentago board. 
 
@@ -162,6 +162,7 @@ def evaluate(board):
 								Player_cross4+=1
 							else:
 								Player_sequence4+=1
+
 						if run_length > 4:
 							Player_sequence5+=1
 					if current_type == 1:
@@ -746,7 +747,7 @@ def evaluate(board):
 
 
 	if AI_sequence5 > 0 and Player_sequence5 > 0:
-		return -.5
+		return -.005
 	if AI_sequence5 > 0:
 		return 9999999
 	if Player_sequence5 > 0:
@@ -772,7 +773,7 @@ def evaluate(board):
 	if board[4][4] == 1:
 		AI_centers+=1
 
-	#determine center spread for each player
+	# determine center spread for each player
 	for x in range(6):
 		for y in range(6):
 			if board[x][y] == 1:
