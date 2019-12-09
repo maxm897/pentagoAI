@@ -72,7 +72,7 @@ def new_game():
             GamePlay.printBoard(board)
             turn=0
 
-        if evaluate.evaluate(board) in [9999999, -9999999, -.5]:
+        if evaluate.evaluate(board) in [9999999, -9999999, -.005]:
             final_score = evaluate.evaluate(board)
             game_over = True
         board_full = True
@@ -82,15 +82,15 @@ def new_game():
                     board_full = False
         if board_full:
             game_over = True
-            final_score = -.6
+            final_score = -.006
 
     if final_score == 9999999:
         print("Game over, the AI has won")
     if final_score == -9999999:
         print("Congratulations! You won!")
-    if final_score == -.5:
+    if final_score == -.005:
         print("Its a tie!")
-    if final_score == -.6:
+    if final_score == -.006:
         print("The board is full, its a tie!")
     again = input('Would you like to play again? (y/n) ')
     while again != 'y' and again != 'n':
