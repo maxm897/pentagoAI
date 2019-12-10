@@ -29,3 +29,7 @@ def convertQuadrantToBinary(quad):
 
 def convertBinaryToDecimal(binary):
     return base(binary, 2, 10)
+
+
+def convertFormatToBoard(response):
+    pass
