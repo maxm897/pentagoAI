@@ -1,5 +1,6 @@
 from requests import get
 from boardToFormat import convertBoardToFormat, convertFormatToBoard
+from random import randint
 
 
 def takeBoardReturnReponseBoard(board):
@@ -24,8 +25,6 @@ def makeRequest(state):
     movesDict = r.json()
 
     firstMove = chooseMove(movesDict, 'first')
-
-    print(firstMove)
 
     newURL = "https://backend.perfect-pentago.net/{}".format(firstMove)
 
@@ -52,6 +51,9 @@ def chooseMove(movesDict, move):
         best = 2
         for state in movesDict:
             if type(movesDict[state]) == int and int(movesDict[state]) < best:
+                bestState = state
+                best = movesDict[state]
+            elif type(movesDict[state]) == int and int(movesDict[state]) == best and randint(0, 3) == 1:
                 bestState = state
                 best = movesDict[state]
             if best == -1:

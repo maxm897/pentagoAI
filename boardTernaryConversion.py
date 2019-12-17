@@ -76,3 +76,8 @@ def ternaryConvertToBoard(tuple):
                       bottomRight[0], topRight[2], topRight[1], topRight[0]])
 
     return [col1, col2, col3, col4, col5, col6]
+
+
+def ternaryToBoard(tern):
+    # takes in a 36-length ternary tuple and turns it into a board format
+    pass
