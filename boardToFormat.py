@@ -32,4 +32,34 @@ def convertBinaryToDecimal(binary):
 
 
 def convertFormatToBoard(response):
-    pass
+    # take in the response of the perfect pentago API in the format of a decimal
+    # number and convert it back to a 36-length ternary tuple
+
+    b = convertDecimalToBinary(response)
+    zeros = (0,)*(64 - len(b))
+    finalBin = zeros + b
+    topRightBinary = finalBin[:16]
+    bottomRightBinary = finalBin[16:32]
+    topLeftBinary = finalBin[32:48]
+    bottomLeftBinary = finalBin[48:]
+
+    topRightFinal = convertBinaryToQuadrant(topRightBinary)
+    bottomRightFinal = convertBinaryToQuadrant(bottomRightBinary)
+    topLeftFinal = convertBinaryToQuadrant(topLeftBinary)
+    bottomLeftFinal = convertBinaryToQuadrant(bottomLeftBinary)
+
+    concatenatedFinal = bottomLeftFinal + \
+        topLeftFinal + bottomRightFinal + topRightFinal
+
+    return concatenatedFinal
+
+
+def convertBinaryToQuadrant(binary):
+    quadStart = base(binary, 2, 3)
+    zeros = (0,)*(9 - len(quadStart))
+    final = zeros + quadStart
+    return final
+
+
+def convertDecimalToBinary(decimal):
+    return base(decimal, 10, 2)
