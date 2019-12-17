@@ -49,13 +49,13 @@ def ternaryConvertToBoard(tuple):
     """do the opposite of boardConvertToTernary"""
 
     bottomLeft = tuple[0:9]
-    print(bottomLeft)
+    # print(bottomLeft)
     topLeft = tuple[9:18]
-    print(topLeft)
+    # print(topLeft)
     bottomRight = tuple[18:27]
-    print(bottomRight)
+    # print(bottomRight)
     topRight = tuple[27:]
-    print(topRight)
+    # print(topRight)
 
     col1 = ternToBin([bottomLeft[8], bottomLeft[7],
                       bottomLeft[6], topLeft[8], topLeft[7], topLeft[6]])

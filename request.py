@@ -6,17 +6,17 @@ from random import choice
 def takeBoardReturnReponseBoard(board):
     # takes in a board in the form of a 36-length ternary tuple
     # outputs a board in the same format after perfect pentago makes its move
-    print(board)
+    # print(board)
     decimalBoard = convertBoardToFormat(board)
     # print(decimalBoard)
     bestMoveResponse = makeRequest(decimalBoard)
     c = convertFormatToBoard(bestMoveResponse)
-    print(c)
+    # print(c)
     return c
 
 
 def makeRequest(state):
-    print(state)
+    # print(state)
     # takes in a board state as a decimal number represented as a tuple
     # makes a request to the perfect pentago API
     # returns the best response in the format of a decimal int
@@ -29,16 +29,18 @@ def makeRequest(state):
     movesDict = r.json()
 
     firstMove = chooseMove(movesDict, 'first')
-    print(firstMove)
+    # print(firstMove)
 
     newURL = "https://backend.perfect-pentago.net/{}".format(firstMove)
 
     m = get(url=newURL, params=PARAMS)
     newMovesDict = m.json()
-
-    finalMove = chooseMove(newMovesDict, 'second')
-    print("final")
-    print(finalMove)
+    try:
+        finalMove = chooseMove(newMovesDict, 'second')
+    except:
+        finalMove = firstMove[:-1]
+    # print("final")
+    # print(finalMove)
     return finalMove
 
 
