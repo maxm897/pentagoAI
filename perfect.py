@@ -55,7 +55,7 @@ def perfectPlay():
     if final_score == 9999999:
         print("Game over, the AI has won")
     if final_score == -9999999:
-        print(":( the perfect pentago bot won)")
+        print(":( the perfect pentago bot won")
     if final_score == -.005:
         print("Its a tie!")
     if final_score == -.006:
