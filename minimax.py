@@ -9,7 +9,7 @@ bestaction = None
 
 def minimax(board, depth, alpha, beta, bestaction, is_top):
     initial_eval = evaluate.evaluate(board)
-    if ((initial_eval==-9999999) or (initial_eval==9999999) or (initial_eval==-0.5) or (depth==0)):
+    if ((initial_eval==-9999999) or (initial_eval==9999999) or (initial_eval==-0.005) or (depth==0)):
         return initial_eval
     val = evaluate.MINVAL
     if is_top:
@@ -53,7 +53,7 @@ def minimax(board, depth, alpha, beta, bestaction, is_top):
 
 def maximin(board, depth, alpha, beta, bestaction):
     initial_eval = evaluate.evaluate(board)
-    if ((initial_eval == -9999999) or (initial_eval == 9999999) or (initial_eval == -0.5) or (depth == 0)):
+    if ((initial_eval == -9999999) or (initial_eval == 9999999) or (initial_eval == -0.005) or (depth == 0)):
         return initial_eval
     else:
         hashes_seen = set()
