@@ -2,9 +2,9 @@ def binToTern(digit):
     if digit == "" or digit == " ":
         return 0
     if digit == 0:
-        return 1
-    if digit == 1:
         return 2
+    if digit == 1:
+        return 1
 
 
 def boardConvertToTernary(board):
@@ -38,9 +38,9 @@ def ternToBin(col):
     for x in col:
         if x == 0:
             result.append(" ")
-        if x == 1:
-            result.append(0)
         if x == 2:
+            result.append(0)
+        if x == 1:
             result.append(1)
     return result
 
