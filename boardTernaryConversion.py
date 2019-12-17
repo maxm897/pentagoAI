@@ -38,9 +38,9 @@ def ternToBin(col):
     for x in col:
         if x == 0:
             result.append(" ")
-        if x == 2:
-            result.append(0)
         if x == 1:
+            result.append(0)
+        if x == 2:
             result.append(1)
     return result
 
