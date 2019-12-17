@@ -45,8 +45,12 @@ def chooseMove(movesDict, move):
             if state[-1] == 'm' and movesDict[state] > best:
                 bestState = state
                 best = movesDict[state]
+            elif state[-1] == 'm' and movesDict[state] == best and randint(0, 3) == 1:
+                bestState = state
+                best = movesDict[state]
             if best == 1:
                 break
+
     elif move == 'second':
         best = 2
         for state in movesDict:
