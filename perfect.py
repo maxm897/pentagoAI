@@ -33,8 +33,7 @@ def perfectPlay():
             board = boardTernaryConversion.ternaryConvertToBoard(
                 perfectTernaryBoard)
 
-            print("The perfect Pentago bot has taken action:")
-            print("The new board is: ")
+            print("The perfect pentago bot took action. The new board is: ")
 
             GamePlay.printBoard(board)
 
@@ -60,12 +59,6 @@ def perfectPlay():
         print("Its a tie!")
     if final_score == -.006:
         print("The board is full, its a tie!")
-    again = input('Would you like to play again? (y/n) ')
-    while again != 'y' and again != 'n':
-        print('You have entered an invalid input. Type either y or n and then press enter')
-        again = input('Would you like to play again? (y/n) ')
-    if again == 'y':
-        perfectPlay()
 
 
 def valid(x, type):
