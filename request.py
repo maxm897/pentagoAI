@@ -6,7 +6,9 @@ from random import randint
 def takeBoardReturnReponseBoard(board):
     # takes in a board in the form of a 36-length ternary tuple
     # outputs a board in the same format after perfect pentago makes its move
+    print(board)
     decimalBoard = convertBoardToFormat(board)
+    print(decimalBoard)
     bestMoveResponse = makeRequest(decimalBoard)
 
     return convertFormatToBoard(bestMoveResponse)
